@@ -78,11 +78,17 @@ def generate_launch_description():
         executable="rmp220_teleop"
     )
 
+    cam_node = Node(
+        package="ros2_cam_openCV",
+        executable="cam_node"
+    )
+
     return LaunchDescription([
         control_node,
         robot_state_pub_node,
         joint_state_broadcaster_spawner,
         robot_controller_spawner,
         joystick_spawner,
-        teleop_spawner
+        teleop_spawner,
+        cam_node
     ])
