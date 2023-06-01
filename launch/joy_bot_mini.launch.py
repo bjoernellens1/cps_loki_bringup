@@ -28,7 +28,7 @@ def generate_launch_description():
             " ",
             PathJoinSubstitution(
                 [
-                    FindPackageShare("odrive_demo_description"),
+                    FindPackageShare("bot_mini_description"),
                     "urdf",
                     "odrive_diffbot.urdf.xacro"
                 ]
