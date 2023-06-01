@@ -12,10 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
 from launch import LaunchDescription
 from launch.substitutions import Command, FindExecutable, PathJoinSubstitution
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
+from ament_index_python.packages import get_package_share_directory
+from launch_ros.actions import LifecycleNode
 
 
 def generate_launch_description():
@@ -83,6 +86,17 @@ def generate_launch_description():
         executable="cam_node"
     )
 
+    lidar_dir = os.path.join(get_package_share_directory('lslidar_driver'), 'params', 'lsx10.yaml')
+                     
+    lidar_node = LifecycleNode(package='lslidar_driver',
+                                executable='lslidar_driver_node',
+                                name='lslidar_driver_node',
+                                output='screen',
+                                emulate_tty=True,
+                                namespace='',
+                                parameters=[lidar_dir],
+                                )
+
     return LaunchDescription([
         control_node,
         robot_state_pub_node,
@@ -90,5 +104,6 @@ def generate_launch_description():
         robot_controller_spawner,
         joystick_spawner,
         teleop_spawner,
-        cam_node
+        cam_node,
+        lidar_node
     ])
