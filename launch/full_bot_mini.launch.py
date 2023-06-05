@@ -39,7 +39,7 @@ def generate_launch_description():
 
     robot_controllers = PathJoinSubstitution(
         [
-            FindPackageShare("odrive_demo_bringup"),
+            FindPackageShare("bot_mini_bringup"),
             "config",
             "diffbot_controllers.yaml",
         ]
