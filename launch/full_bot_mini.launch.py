@@ -19,6 +19,7 @@ from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 from ament_index_python.packages import get_package_share_directory
 from launch_ros.actions import LifecycleNode
+from launch_ros.descriptions import ParameterValue
 
 
 def generate_launch_description():
@@ -35,7 +36,7 @@ def generate_launch_description():
             ),
         ]
     )
-    robot_description = {"robot_description": robot_description_content}
+    robot_description = {"robot_description": ParameterValue(robot_description_content, value_type=str)}
 
     robot_controllers = PathJoinSubstitution(
         [
