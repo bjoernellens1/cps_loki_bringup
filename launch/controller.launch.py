@@ -100,8 +100,8 @@ def generate_launch_description():
 
     return LaunchDescription([
         control_node,
-        #robot_state_pub_node,
-        #joint_state_broadcaster_spawner, #commented out because not needed?
+        robot_state_pub_node,
+        joint_state_broadcaster_spawner, #commented out because not needed?
         robot_controller_spawner,
         #joystick_spawner,
         #teleop_spawner,
