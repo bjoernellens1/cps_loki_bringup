@@ -88,7 +88,7 @@ def generate_launch_description():
         executable="cam_node"
     )
 
-    use_sim_time = True
+    use_sim_time = False
     slam_params_file = PathJoinSubstitution(
                 [
                     FindPackageShare("bot_mini_bringup"),
