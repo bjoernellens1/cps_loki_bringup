@@ -80,7 +80,7 @@ def generate_launch_description():
     teleop_spawner = Node(
         package="rmp220_teleop",
         executable="rmp220_teleop",
-        remappings=[('/diffbot_base_controller/cmd_vel_unstamped','/cmd_vel_out')]
+        remappings=[('/diffbot_base_controller/cmd_vel_unstamped','/cmd_vel_joy')]
     )
 
     cam_node = Node(
