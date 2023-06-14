@@ -79,7 +79,8 @@ def generate_launch_description():
 
     teleop_spawner = Node(
         package="rmp220_teleop",
-        executable="rmp220_teleop"
+        executable="rmp220_teleop",
+        remappings=[('/diffbot_base_controller/cmd_vel_unstamped','/cmd_vel_out')]
     )
 
     cam_node = Node(
@@ -98,6 +99,14 @@ def generate_launch_description():
         parameters=[lidar_dir],
     )
 
+    twist_mux_params = os.path.join(get_package_share_directory('bot_mini_bringup'),'config','twist_mux.yaml')
+    twist_mux = Node(
+            package="twist_mux",
+            executable="twist_mux",
+            parameters=[twist_mux_params, {'use_sim_time': False}],
+            remappings=[('/cmd_vel_out','/diffbot_base_controller/cmd_vel_unstamped')]
+        )
+
     return LaunchDescription([
         #control_node,
         #robot_state_pub_node,
@@ -106,5 +115,6 @@ def generate_launch_description():
         joystick_spawner,
         teleop_spawner,
         #cam_node,
-        #lidar_node
+        #lidar_node,
+        twist_mux
     ])
