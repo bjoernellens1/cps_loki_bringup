@@ -14,7 +14,14 @@
 
   <exec_depend>odrive_demo_description</exec_depend>
   <exec_depend>rmp220_teleop</exec_depend>
-
+  <exec_depend>nav2_bringup</exec_depend>
+  <exec_depend>navigation2</exec_depend>
+  <exec_depend>ros2_control</exec_depend>
+  <exec_depend>ros2_controllers</exec_depend>
+  <exec_depend>ros2_cam_openCV</exec_depend>
+  <exec_depend>joy</exec_depend>
+  <exec_depend>twist_mux</exec_depend>
+  
   <export>
     <build_type>ament_python</build_type>
   </export>
