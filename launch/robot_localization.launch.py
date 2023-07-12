@@ -118,6 +118,22 @@ def generate_launch_description():
         parameters=[lidar_dir],
     )
 
+    robot_localization_node = Node(
+       package='robot_localization',
+       executable='ekf_node',
+       name='ekf_filter_node',
+       output='screen',
+       parameters = [ PathJoinSubstitution(
+                [
+                    FindPackageShare("bot_mini_bringup"),
+                    "config",
+                    "ekf.yaml"
+                ]
+            ) ,
+            #{'use_sim_time': LaunchConfiguration('use_sim_time')}
+            ]
+    )
+
     return LaunchDescription([
         #control_node,
         #robot_state_pub_node,
@@ -127,5 +143,6 @@ def generate_launch_description():
         #teleop_spawner,
         #cam_node,
         #lidar_node,
-        mapper_node
+        #mapper_node,
+        robot_localization_node
     ])

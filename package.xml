@@ -21,6 +21,7 @@
   <exec_depend>ros2_cam_openCV</exec_depend>
   <exec_depend>joy</exec_depend>
   <exec_depend>twist_mux</exec_depend>
+  <exec_depend>robot_localization</exec_depend>
   
   <export>
     <build_type>ament_python</build_type>
