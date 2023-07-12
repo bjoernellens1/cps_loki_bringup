@@ -29,11 +29,15 @@ diffbot_base_controller:
     base_frame_id: base_link
     # pose_covariance_diagonal : [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
     # twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
-    pose_covariance_diagonal:
-      [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
-    twist_covariance_diagonal:
-      [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0] # changed from https://github.com/kallaspriit/rosbot/blob/main/ros/src/rosbot_description/config/diff_drive_controller.yaml
+    # pose_covariance_diagonal:
+    #   [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
+    # twist_covariance_diagonal:
+    #   [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0] # changed from https://github.com/kallaspriit/rosbot/blob/main/ros/src/rosbot_description/config/diff_drive_controller.yaml
 
+    # Updated covariance matrix to small values on the diagonal axis for package ros_localization. This is recommended for diffdrive rorbots.
+    pose_covariance_diagonal : [0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001]
+    twist_covariance_diagonal: [0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001]
+    
     open_loop: false
     #enable_odom_tf: true #disabled because tf will be handled by robot_localizaion node in the future (imu sensor fusion)
 
