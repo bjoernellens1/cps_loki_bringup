@@ -10,13 +10,13 @@ ekf_filter_node:
 # set to true, no 3D information will be used in your state estimate. Use this if you are operating in a planar
 # environment and want to ignore the effect of small variations in the ground plane that might otherwise be detected
 # by, for example, an IMU. Defaults to false if unspecified.
-        two_d_mode: false
+        two_d_mode: true
 
 # Whether to publish the acceleration state. Defaults to false if unspecified.
         publish_acceleration: true
 
 # Whether to broadcast the transformation over the /tf topic. Defaultsto true if unspecified.
-        publish_tf: true
+        publish_tf: true #was true
 
 # 1. Set the map_frame, odom_frame, and base_link frames to the appropriate frame names for your system.
 #     1a. If your system does not have a map_frame, just remove it, and make sure "world_frame" is set to the value of odom_frame.
@@ -35,10 +35,10 @@ ekf_filter_node:
         odom0: /odom
         # The order of the values of this parameter is x, y, z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw, ax, ay, az.
         # Configure it for x,y,z,vyaw on the odom topic
-        odom0_config: [true,  true,  true,
-                       false, false, false,
-                       false, false, false,
+        odom0_config: [true , true , true,
                        false, false, true,
+                       false, false, false,
+                       false, false, false,
                        false, false, false]
 
         
@@ -49,9 +49,9 @@ ekf_filter_node:
         imu0_config: [false, false, false,
                       false, false, false,
                       false, false, false,
-                      false, false, false,
-                      true, true, true]
+                      false, false, true,
+                      false, false, false]
 
         # [ADVANCED] Some IMUs automatically remove acceleration due to gravity, and others don't. If yours doesn't, please set
         # this to true, and *make sure* your data conforms to REP-103, specifically, that the data is in ENU frame.
-        imu0_remove_gravitational_acceleration: false
+        imu0_remove_gravitational_acceleration: true
