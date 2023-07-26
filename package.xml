@@ -18,7 +18,6 @@
   <exec_depend>navigation2</exec_depend>
   <exec_depend>ros2_control</exec_depend>
   <exec_depend>ros2_controllers</exec_depend>
-  <exec_depend>ros2_cam_openCV</exec_depend>
   <exec_depend>joy</exec_depend>
   <exec_depend>twist_mux</exec_depend>
   <exec_depend>robot_localization</exec_depend>
