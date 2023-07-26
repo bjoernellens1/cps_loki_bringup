@@ -35,12 +35,13 @@ ekf_filter_node:
         odom0: /odom
         # The order of the values of this parameter is x, y, z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw, ax, ay, az.
         # Configure it for x,y,z,vyaw on the odom topic
-        odom0_config: [true , true , true,
+        odom0_config: [true , true , false,
                        false, false, true,
                        false, false, false,
                        false, false, true,
                        false, false, false]
-
+        odom0_differential: true
+        odom0_relative: true
         
         imu0: /imu/data_raw
         # The order of the values of this parameter is x, y, z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw, ax, ay, az.
@@ -51,6 +52,8 @@ ekf_filter_node:
                       false, false, false,
                       false, false, true,
                       false, false, false]
+        imu0_differential: true
+        imu0_relative: true
 
         # [ADVANCED] Some IMUs automatically remove acceleration due to gravity, and others don't. If yours doesn't, please set
         # this to true, and *make sure* your data conforms to REP-103, specifically, that the data is in ENU frame.
