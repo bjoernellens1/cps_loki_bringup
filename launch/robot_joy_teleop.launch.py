@@ -116,5 +116,5 @@ def generate_launch_description():
         teleop_spawner,
         #cam_node,
         #lidar_node,
-        #twist_mux
+        twist_mux
     ])
