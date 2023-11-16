@@ -23,7 +23,8 @@ from launch_ros.descriptions import ParameterValue
 
 
 def generate_launch_description():
-    use_sim_time = LaunchConfiguration('use_sim_time')
+    #use_sim_time = LaunchConfiguration('use_sim_time')
+    use_sim_time = True
     
     robot_description_content = Command(
         [
