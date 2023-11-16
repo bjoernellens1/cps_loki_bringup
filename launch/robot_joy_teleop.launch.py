@@ -107,6 +107,7 @@ def generate_launch_description():
             remappings=[('/cmd_vel_out','/diffbot_base_controller/cmd_vel_unstamped')]
         )
 
+    use_sim_time = false
     joy_params = os.path.join(get_package_share_directory('bot_mini_bringup'),'config','joystick.yaml')
     joy_node = Node(
             package='joy',
