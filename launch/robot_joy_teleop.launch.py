@@ -107,14 +107,32 @@ def generate_launch_description():
             remappings=[('/cmd_vel_out','/diffbot_base_controller/cmd_vel_unstamped')]
         )
 
+    joy_node = Node(
+            package='joy',
+            executable='joy_node',
+            parameters=[joy_params, {'use_sim_time': use_sim_time}],
+            #namespace = namespace
+         )
+    
+    teleop_node = Node(
+            package='teleop_twist_joy',
+            executable='teleop_node',
+            name='teleop_node',
+            parameters=[joy_params, {'use_sim_time': use_sim_time}],
+            remappings=[('cmd_vel', 'cmd_vel_joy')],
+            #namespace = namespace
+         )
+
     return LaunchDescription([
         #control_node,
         #robot_state_pub_node,
         #joint_state_broadcaster_spawner,
         #robot_controller_spawner,
-        joystick_spawner,
-        teleop_spawner,
+        #joystick_spawner,
+        #teleop_spawner,
         #cam_node,
         #lidar_node,
-        twist_mux
+        twist_mux,
+        joy_node,
+        teleop_node
     ])
