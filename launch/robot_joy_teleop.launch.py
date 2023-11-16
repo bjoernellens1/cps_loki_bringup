@@ -14,7 +14,7 @@
 
 import os
 from launch import LaunchDescription
-from launch.substitutions import Command, FindExecutable, PathJoinSubstitution
+from launch.substitutions import Command, FindExecutable, PathJoinSubstitution, LaunchConfiguration
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 from ament_index_python.packages import get_package_share_directory
@@ -23,6 +23,8 @@ from launch_ros.descriptions import ParameterValue
 
 
 def generate_launch_description():
+    use_sim_time = LaunchConfiguration('use_sim_time')
+    
     robot_description_content = Command(
         [
             PathJoinSubstitution([FindExecutable(name="xacro")]),
@@ -107,7 +109,6 @@ def generate_launch_description():
             remappings=[('/cmd_vel_out','/diffbot_base_controller/cmd_vel_unstamped')]
         )
 
-    use_sim_time = false
     joy_params = os.path.join(get_package_share_directory('bot_mini_bringup'),'config','joystick.yaml')
     joy_node = Node(
             package='joy',
