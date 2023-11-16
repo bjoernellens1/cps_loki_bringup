@@ -1,6 +1,10 @@
 twist_mux:
   ros__parameters:
     topics:
+      common:
+        topic   : cmd_vel_common
+        timeout : 0.5
+        priority: 0
       navigation:
         topic   : cmd_vel
         timeout : 0.5
@@ -12,4 +16,4 @@ twist_mux:
       joystick:
         topic   : cmd_vel_joy
         timeout : 0.5
-        priority: 5
+        priority: 50
