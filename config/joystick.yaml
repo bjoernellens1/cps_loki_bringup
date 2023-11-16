@@ -3,7 +3,7 @@ joy_node:
     device_id: 0
     deadzone: 0.05
     autorepeat_rate: 0.00
-    coalesce_interval: 0.001 # merging messeges in this interval
+    #coalesce_interval: 0.001 # merging messeges in this interval
 
 teleop_node:
   ros__parameters:
