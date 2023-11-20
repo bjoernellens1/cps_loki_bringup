@@ -48,7 +48,7 @@ def generate_launch_description():
 
     rviz_config_file = PathJoinSubstitution(
         [
-            FindPackageShare("bot_mini_bringup"),
+            FindPackageShare("cps_loki_bringup"),
             "config",
             "bot_mini.rviz"
         ]
@@ -87,7 +87,7 @@ def generate_launch_description():
         arguments=["-d", rviz_config_file],
     )
 
-    package_name='bot_mini_bringup'
+    package_name='cps_loki_bringup'
     gazebo_params_file = os.path.join(get_package_share_directory(package_name),'config','gazebo_params.yaml')
 
     # Include the Gazebo launch file, provided by the gazebo_ros package

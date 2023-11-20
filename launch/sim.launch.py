@@ -32,7 +32,7 @@ def generate_launch_description():
             " ",
             PathJoinSubstitution(
                 [
-                    FindPackageShare("bot_mini_description"),
+                    FindPackageShare("cps_loki_description"),
                     "urdf",
                     "odrive_diffbot.urdf.xacro"
                 ]
@@ -43,7 +43,7 @@ def generate_launch_description():
 
     robot_controllers = PathJoinSubstitution(
         [
-            FindPackageShare("bot_mini_bringup"),
+            FindPackageShare("cps_loki_bringup"),
             "config",
             "diffbot_controllers.yaml",
         ]
@@ -88,7 +88,7 @@ def generate_launch_description():
 
     joystick_launch = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
-                    get_package_share_directory('bot_mini_bringup'),'joy_teleop.launch.py'
+                    get_package_share_directory('cps_loki_bringup'),'joy_teleop.launch.py'
                 )]), launch_arguments={'use_sim_time': 'true'}.items()
     )
 
@@ -108,7 +108,7 @@ def generate_launch_description():
         parameters=[lidar_dir],
     )
 
-    twist_mux_params = os.path.join(get_package_share_directory('bot_mini_bringup'),'config','twist_mux.yaml')
+    twist_mux_params = os.path.join(get_package_share_directory('cps_loki_bringup'),'config','twist_mux.yaml')
     twist_mux = Node(
             package="twist_mux",
             executable="twist_mux",
@@ -116,7 +116,7 @@ def generate_launch_description():
             remappings=[('/cmd_vel_out','/diffbot_base_controller/cmd_vel_unstamped')]
         )
 
-    gazebo_params_file = os.path.join(get_package_share_directory('bot_mini_bringup'),'config','gazebo_params.yaml')
+    gazebo_params_file = os.path.join(get_package_share_directory('cps_loki_bringup'),'config','gazebo_params.yaml')
     # Include the Gazebo launch file, provided by the gazebo_ros package
     gazebo = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
