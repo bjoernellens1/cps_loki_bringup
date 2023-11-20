@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>bot_mini_bringup</name>
-  <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <name>cps_loki_bringup</name>
+  <version>0.0.2</version>
+  <description>ROS2 bringup sources for CPS Loki Robot</description>
   <maintainer email="bjoern.ellensohn@gmail.com">bjorn</maintainer>
   <license>TODO: License declaration</license>
 
