@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>bot_mini_bringup</name>
-  <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <name>cps_loki_bringup</name>
+  <version>0.0.2</version>
+  <description>ROS2 bringup package for CPS Loki Robot.</description>
   <maintainer email="bjoern.ellensohn@gmail.com">bjorn</maintainer>
   <license>TODO: License declaration</license>
 
@@ -13,7 +13,7 @@
   <test_depend>python3-pytest</test_depend>
 
   <exec_depend>odrive_demo_description</exec_depend>
-  <exec_depend>rmp220_teleop</exec_depend>
+  <exec_depend>teleop_twist_joy</exec_Depend>
   <exec_depend>nav2_bringup</exec_depend>
   <exec_depend>navigation2</exec_depend>
   <exec_depend>ros2_control</exec_depend>
