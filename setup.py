@@ -2,7 +2,7 @@ from setuptools import setup
 import os
 from glob import glob
 
-package_name = 'bot_mini_bringup'
+package_name = 'cps_loki_bringup'
 
 setup(
     name=package_name,
