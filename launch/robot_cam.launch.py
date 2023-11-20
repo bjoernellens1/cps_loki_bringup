@@ -29,7 +29,7 @@ def generate_launch_description():
             " ",
             PathJoinSubstitution(
                 [
-                    FindPackageShare("bot_mini_description"),
+                    FindPackageShare("cps_loki_description"),
                     "urdf",
                     "odrive_diffbot.urdf.xacro"
                 ]
@@ -40,7 +40,7 @@ def generate_launch_description():
 
     robot_controllers = PathJoinSubstitution(
         [
-            FindPackageShare("bot_mini_bringup"),
+            FindPackageShare("cps_loki_bringup"),
             "config",
             "diffbot_controllers.yaml",
         ]

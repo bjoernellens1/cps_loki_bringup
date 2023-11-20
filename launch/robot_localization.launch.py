@@ -30,7 +30,7 @@ def generate_launch_description():
             " ",
             PathJoinSubstitution(
                 [
-                    FindPackageShare("bot_mini_description"),
+                    FindPackageShare("cps_loki_description"),
                     "urdf",
                     "odrive_diffbot.urdf.xacro"
                 ]
@@ -41,7 +41,7 @@ def generate_launch_description():
 
     robot_controllers = PathJoinSubstitution(
         [
-            FindPackageShare("bot_mini_bringup"),
+            FindPackageShare("cps_loki_bringup"),
             "config",
             "diffbot_controllers.yaml",
         ]
@@ -91,7 +91,7 @@ def generate_launch_description():
     use_sim_time = False
     slam_params_file = PathJoinSubstitution(
                 [
-                    FindPackageShare("bot_mini_bringup"),
+                    FindPackageShare("cps_loki_bringup"),
                     "config",
                     "mapper_params_online_async.yaml"
                 ]
@@ -125,7 +125,7 @@ def generate_launch_description():
        output='screen',
        parameters = [ PathJoinSubstitution(
                 [
-                    FindPackageShare("bot_mini_bringup"),
+                    FindPackageShare("cps_loki_bringup"),
                     "config",
                     "ekf.yaml"
                 ]
