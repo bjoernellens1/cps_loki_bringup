@@ -14,7 +14,7 @@
 
 import os
 from launch import LaunchDescription
-from launch.substitutions import Command, FindExecutable, PathJoinSubstitution
+from launch.substitutions import Command, FindExecutable, PathJoinSubstitution, LaunchConfiguration
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 from ament_index_python.packages import get_package_share_directory
@@ -23,6 +23,9 @@ from launch_ros.descriptions import ParameterValue
 
 
 def generate_launch_description():
+    #use_sim_time = LaunchConfiguration('use_sim_time')
+    use_sim_time = True
+    
     robot_description_content = Command(
         [
             PathJoinSubstitution([FindExecutable(name="xacro")]),
@@ -80,8 +83,7 @@ def generate_launch_description():
     teleop_spawner = Node(
         package="rmp220_teleop",
         executable="rmp220_teleop",
-        #remappings=[('/diffbot_base_controller/cmd_vel_unstamped','/cmd_vel_joy')]
-        remappings=[('/cmd_vel','/diffbot_base_controller/cmd_vel_unstamped')]
+        remappings=[('cmd_vel', 'cmd_vel_joy')],
     )
 
     cam_node = Node(
@@ -108,14 +110,33 @@ def generate_launch_description():
             remappings=[('/cmd_vel_out','/diffbot_base_controller/cmd_vel_unstamped')]
         )
 
+    joy_params = os.path.join(get_package_share_directory('cps_loki_bringup'),'config','joystick.yaml')
+    joy_node = Node(
+            package='joy',
+            executable='joy_node',
+            parameters=[joy_params, {'use_sim_time': use_sim_time}],
+            #namespace = namespace
+         )
+    
+    teleop_node = Node(
+            package='teleop_twist_joy',
+            executable='teleop_node',
+            name='teleop_node',
+            parameters=[joy_params, {'use_sim_time': use_sim_time}],
+            remappings=[('cmd_vel', 'cmd_vel_joy')],
+            #namespace = namespace
+         )
+
     return LaunchDescription([
         #control_node,
         #robot_state_pub_node,
         #joint_state_broadcaster_spawner,
         #robot_controller_spawner,
-        joystick_spawner,
-        teleop_spawner,
+        #joystick_spawner,
+        #teleop_spawner,
         #cam_node,
         #lidar_node,
-        #twist_mux
+        twist_mux,
+        joy_node,
+        teleop_node
     ])

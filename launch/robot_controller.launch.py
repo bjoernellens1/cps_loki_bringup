@@ -72,39 +72,9 @@ def generate_launch_description():
         arguments=["diffbot_base_controller", "-c", "/controller_manager"],
     )
 
-    joystick_spawner = Node(
-        package="joy",
-        executable="joy_node"
-    )
-
-    teleop_spawner = Node(
-        package="rmp220_teleop",
-        executable="rmp220_teleop"
-    )
-
-    cam_node = Node(
-        package="ros2_cam_openCV",
-        executable="cam_node"
-    )
-
-    lidar_dir = os.path.join(get_package_share_directory('lslidar_driver'), 'params', 'lsx10.yaml')         
-    lidar_node = LifecycleNode(
-        package='lslidar_driver',
-        executable='lslidar_driver_node',
-        name='lslidar_driver_node',
-        output='screen',
-        emulate_tty=True,
-        namespace='',
-        parameters=[lidar_dir],
-    )
-
     return LaunchDescription([
         control_node,
         robot_state_pub_node,
-        joint_state_broadcaster_spawner, #commented out because not needed?
-        robot_controller_spawner,
-        #joystick_spawner,
-        #teleop_spawner,
-        #cam_node,
-        #lidar_node
+        joint_state_broadcaster_spawner,
+        robot_controller_spawner
     ])
