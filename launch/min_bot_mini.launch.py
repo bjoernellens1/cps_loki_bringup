@@ -105,6 +105,4 @@ def generate_launch_description():
         robot_controller_spawner,
         joystick_spawner,
         teleop_spawner,
-        #cam_node,
-        #lidar_node
     ])

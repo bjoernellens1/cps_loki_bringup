@@ -22,17 +22,32 @@ from launch_ros.actions import LifecycleNode
 from launch_ros.descriptions import ParameterValue
 from launch.substitutions import LaunchConfiguration
 
+from launch.substitutions import LaunchConfiguration, PythonExpression
+from launch.actions import DeclareLaunchArgument, GroupAction, SetEnvironmentVariable
 
 def generate_launch_description():
+
+    namespace = LaunchConfiguration('namespace')
+    use_sim_time = LaunchConfiguration('use_sim_time')
+
+    declare_namespace_cmd = DeclareLaunchArgument(
+        'namespace',
+        default_value='',
+        description='Top-level namespace')
+
+    declare_use_sim_time_cmd = DeclareLaunchArgument(
+        'use_sim_time',
+        default_value='false',
+        description='Use simulation (Gazebo) clock if true')
 
     slam_params_file = PathJoinSubstitution(
                 [
                     FindPackageShare("cps_loki_bringup"),
                     "config",
-                    "mapper_params_online_async.yaml"
+                    "slam.yaml"
                 ]
             )
-            
+
     mapper_node = Node(
         package="slam_toolbox",
         executable="async_slam_toolbox_node",
@@ -42,6 +57,7 @@ def generate_launch_description():
             slam_params_file,
             {'use_sim_time': use_sim_time}
         ],
+        namespace=namespace
     )
 
     return LaunchDescription([
